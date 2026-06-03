@@ -1,4 +1,7 @@
 import express from 'express'
+import authRoutes from './routes/authRoutes.ts';
+import habitRoutes from './routes/habitRoutes.ts';
+import userRoutes from './routes/userRoutes.ts';
 
 // Create Express application
 const app = express()
@@ -7,6 +10,10 @@ const app = express()
 app.get('/health', (req, res) => {
   res.status(200).send('<button>Click Me</button>')
 })
+
+app.use('/api/auth', authRoutes)
+app.use('/api/habits', habitRoutes)
+app.use('/api/users', userRoutes)
 
 // Export the app for use in other modules (like tests)
 export { app }
